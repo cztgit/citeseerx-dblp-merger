@@ -1,0 +1,58 @@
+# parameters
+
+THRESHOLD		0.7
+REMOVE_STOPWORDS	true
+WRITE_MERGED_FILES	true
+OUTPUT_STATS		true
+SIMILARITY		jaccard
+OPERATOR		or
+N_GRAMS			3
+PAGE_LIMIT		1
+BUILD_INDEX             false
+
+
+# matching features to use
+
+MATCH_TITLE		true
+MATCH_AUTHORS		false
+MATCH_PAGE_COUNT	false
+MATCH_VENUE		false
+
+# paths
+
+# SOLR url
+BASE_URL		http://localhost:8983/solr/collection1
+
+# DBLP xml file
+DBLP_PATH		input/run01/dblp.xml
+
+# file containing the paths for the CiteSeer xml files
+CITESEER_PATH		input/run01/xmlsample.txt
+
+# an arbitrary folder in which all results are written into
+OUTPUT_FOLDER_PATH	output/run01
+
+# folder where  merged papers are stored, when "WRITE_MERGED_FILES" option = true, relative to OUTPUT_FOLDER_PATH
+MERGED_FOLDER_PATH      merged-files
+
+# file in which TP, FP, FN, precision, recall and F-measure are written, when 'WRITE_MERGED_FILES' option = false, relative to OUTPUT_FOLDER_PATH
+STATS_FILE_PATH		output.txt
+
+# file in which the number of DBLP hits for each CiteSeer record is written, relative to OUTPUT_FOLDER_PATH
+HITS_FILE_PATH		hits.txt
+
+# log files path relataive to OUTPUT_FOLDER_PATH
+LOG_FILE_PATH		runlog.txt
+
+# file in which stop words are listed
+STOP_WORDS_PATH		input/sw.txt
+
+# file in which manual matches are listed, when 'WRITE_MERGED_FILES' option = false
+MATCHES_FILE_PATH	input/matches.txt
+
+# file in which the number of pages for records in the current subset is listed
+PAGE_COUNT_FILE_PATH	input/run01/pages.txt
+
+# debug
+
+VERBOSITY_LEVEL		2

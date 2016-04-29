@@ -1,0 +1,9 @@
+# java
+*.class
+*~
+
+# OS
+.DS_Store
+
+# configuration files
+input/config.txt
