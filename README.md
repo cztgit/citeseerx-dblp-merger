@@ -68,17 +68,18 @@ The work-around was to increase the default by specifying "-DentityExpansionLimi
  ERROR while processing file '/data/2016_merge-csx-dblp/CSXDataset_serial_v2-result/10.1.1.71.5577.xml'
 	Server at http://localhost:8983/solr/collection1 returned non ok status:413, message:FULL head
 
-This is not an error of Solr but Jetty, the servlet container. It happens when the input query is too long. The solution is to increase the default "requestHeaderSize" in etc/jetty.xml. I increased it to 8192 and the error disappears. The statement in jetty.xml looks like
+This is not an error of Solr but Jetty, the servlet container. It happens when the input query is too long. The solution is to increase the default "requestHeaderSize" in etc/jetty.xml. I increased it to 8192 and the error disappears. The statement in jetty.xml looks like `<Set name="requestHeaderSize">8192</Set>` inside `<Call>` `<Arg>`. 
+```
    <Call name="addConnector">
        <Arg>
-           <New class="org.eclipse.jetty.server.bio.SocketConnector">
-             <Set name="host"><SystemProperty name="jetty.host" /></Set>
-             <Set name="port"><SystemProperty name="jetty.port" default="8983"/></Set>
-             <Set name="maxIdleTime">50000</Set>
-             <Set name="lowResourceMaxIdleTime">1500</Set>
-             <Set name="requestHeaderSize">8192</Set>
-             <Set name="statsOn">false</Set>
-           </New>
+        <New class="org.eclipse.jetty.server.bio.SocketConnector">
+        <Set name="host"><SystemProperty name="jetty.host" /></Set>
+        <Set name="port"><SystemProperty name="jetty.port" default="8983"/></Set>
+        <Set name="maxIdleTime">50000</Set>
+        <Set name="lowResourceMaxIdleTime">1500</Set>
+        <Set name="requestHeaderSize">8192</Set>
+        <Set name="statsOn">false</Set>
+        </New>
        </Arg>
      </Call>
-
+```
